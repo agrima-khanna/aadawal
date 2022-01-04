@@ -1,0 +1,50 @@
+table,
+tr,
+td {
+  border: solid 0.5px gray;
+  border-collapse: collapse;
+}
+td {
+  padding: 48px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.ngo {
+  display: flex;
+}
+.sectionNav {
+  display: flex;
+  flex-direction: column;
+  background-color: #a91d1d;
+  padding: 0;
+  padding-top: 10px;
+  font-size: large;
+}
+.sectionNavBtn {
+  text-decoration: none;
+  min-width: max-content;
+  /* flex: flex-grow; */
+  color: white;
+  /* padding: 48px; */
+  padding-left: 16px;
+  padding-right: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.sectionNavBtn:hover {
+  background: rgb(255, 223, 175);
+  background: rgba(255, 223, 175, 0.3);
+  color: black;
+}
+.sectionPhoto {
+  height: 200px;
+  object-fit: cover;
+  float: left;
+}
+.activities {
+  display: flex;
+  gap: 4px;
+}
+.activitiesGallery {
+  width: 52vw;
+}

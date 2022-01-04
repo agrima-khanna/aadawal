@@ -1,0 +1,70 @@
+button {
+  background: none;
+  border: none;
+}
+.gallery {
+  /* background: chartreuse; */
+  display: flex;
+  /* flex-direction: column; */
+  gap: 16px;
+}
+.yearsNav {
+  display: flex;
+  flex-direction: column;
+  background-color: #a91d1d;
+  /* height: 100vh; */
+}
+.yearNavBtn {
+  color: white;
+  padding: 90px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.yearNavBtn:hover {
+  background: rgb(255, 223, 175);
+  background: rgba(255, 223, 175, 0.3);
+  color: black;
+}
+.yearNavBtnActive {
+  background-color: #ffdfaf;
+  color: black;
+}
+.yearNavBtnActive:hover {
+  background-color: #ffdfaf;
+  color: black;
+}
+.galleryDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  /* padding-top: 16px; */
+  align-items: center;
+  gap: 16px;
+}
+.upload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* align-items: right;
+  align-content: right;
+  justify-items: right; */
+  padding: 24px;
+  font-size: small;
+}
+
+.uploadBtn,
+.deleteBtn {
+  background-color: #a91d1d;
+  color: white;
+  margin-top: 4px;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: small;
+  width: 240px;
+}
+.inputFile {
+  /* background-color: #a91d1d; */
+  width: fit-content;
+}
