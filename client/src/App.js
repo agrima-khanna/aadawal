@@ -9,7 +9,7 @@ import {
 import {
   Home,
   About,
-  Activities,
+  Events,
   Gallery,
   Contact,
   Ngo,
@@ -52,7 +52,7 @@ class App extends Component {
       { name: "HOME", to: "/", nameCamelCase: "Home" },
       { name: "ABOUT US", to: "/about", nameCamelCase: "About Us" },
 
-      { name: "ACTIVITIES", to: "/activities", nameCamelCase: "Activities" },
+      { name: "EVENTS", to: "/events", nameCamelCase: "Events" },
 
       { name: "PHOTO GALLERY", to: "/gallery", nameCamelCase: "Gallery" },
 
@@ -64,7 +64,15 @@ class App extends Component {
       this.setState({ activeLink: name });
     };
     var socialMediaIcons = [];
-    for (const key in icons) socialMediaIcons.push(icons[key]);
+    for (const key in icons) {
+      var obj = { icon: icons[key], link: "" };
+      if (key === "Facebook") obj.link = "https://www.facebook.com/aadawal/";
+      else if (key === "Instagram")
+        obj.link = "https://instagram.com/rsmaadawal?utm_medium=copy_link";
+      else obj.link = "https://youtube.com/channel/UCwsoPqn_7N67QIMrDD55yiA";
+
+      socialMediaIcons.push(obj);
+    }
     const Call = otherIcons["Call"];
 
     return (
@@ -111,7 +119,7 @@ class App extends Component {
             <Routes>
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path="/about" element={<About />}></Route>
-              <Route exact path="/activities" element={<Activities />}></Route>
+              <Route exact path="/events" element={<Events />}></Route>
               <Route
                 exact
                 path="/gallery"
@@ -130,11 +138,16 @@ class App extends Component {
           </div>
           <div className="follow">
             Follow us on
-            {socialMediaIcons.map((Icon, i) => {
+            {socialMediaIcons.map((icon, i) => {
               return (
-                <div key={i} className="socialMediaBtn">
-                  <Icon />
-                </div>
+                <a
+                  href={icon.link}
+                  key={i}
+                  className="socialMediaBtn"
+                  target="_blank"
+                >
+                  <icon.icon />
+                </a>
               );
             })}
           </div>

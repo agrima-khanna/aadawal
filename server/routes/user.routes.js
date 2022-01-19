@@ -109,12 +109,13 @@ router.post("/google", async (req, res) => {
     });
     const { name, email, picture } = ticket.getPayload();
     User.find({ email: email }, function (err, doc) {
-      if (doc.length == 0) res.json({ valid: false });
+      if (doc.length == 0)
+        res.json({ valid: false, message: "User not registered!" });
       else res.json({ valid: true, email: email });
     });
     res.status(201);
   } catch {
-    res.json({ valid: "invalid" });
+    res.json({ valid: false, message: "Unable to login!" });
   }
 });
 

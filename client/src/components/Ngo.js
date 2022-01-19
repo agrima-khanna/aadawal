@@ -1,4 +1,4 @@
-import "../styles/ngo.css";
+import "../styles/ngoAndEvents.css";
 import ngoLogo from "./ngo_logo.jpg";
 import genesis from "./ngo/image8.png";
 import img1 from "./ngo/image47.jpg";

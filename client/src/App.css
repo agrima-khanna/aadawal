@@ -197,6 +197,7 @@ button {
 }
 .readMore:hover {
   background-color: #f6f2d4;
+  color: #f05454;
 }
 .goToGallery {
   background-color: transparent;

@@ -1,15 +1,16 @@
 table,
 tr,
-td {
+/* td {
   border: solid 0.5px gray;
   border-collapse: collapse;
-}
+} */
 td {
   padding: 48px;
   padding-top: 40px;
   padding-bottom: 40px;
 }
-.ngo {
+.ngo,
+.events {
   display: flex;
 }
 .sectionNav {

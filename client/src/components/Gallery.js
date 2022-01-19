@@ -61,6 +61,7 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
           original: "http://localhost:5000/image/" + img.filename,
           thumbnail: "http://localhost:5000/image/" + img.filename,
           id: img.id,
+          originalHeight: "400px",
         });
         setImagesDatabase({ images: imagesNew, flag: 1 });
         // });

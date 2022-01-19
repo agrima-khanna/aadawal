@@ -18,19 +18,15 @@ export function Home() {
             even in gushing wind.
           </i>
           <br /> <br />
-          Same happened at an event at Udaipur- the city of lakes from 5 th -7
-          th July 2019 These dates have marked the beginning of a new beacon in
-          the history of Rajasthan. The event “AADAWAL -19” A Literature
-          Festival, first of its kind in Rajasthan was celebrated with joy, fun
-          & immense enthusiasm. Till now no such event where the lyrics of every
-          song, music, dance and poetry had its complete origin from the roots
-          of Rajasthani culture has ever been celebrated in the history of
-          Udaipur.
+          AADAWAL - A Literature Festival, first of its kind is celebrated every
+          year in Rajasthan with immense joy, fun & enthusiasm. The lyrics of
+          every song, music, dance and poetry had its complete origin from the
+          roots of Rajasthani culture.
           <br />
           <br />
-          The core value of the event was to make the youth realize the
-          importance of our culture and to provide a platform to the talented,
-          yet unpopular, traditional artists/ artesian of Rajasthan.
+          The core value of "AADAWAL" is to make the youth realize the
+          importance of Rajasthani culture and to provide a platform to the
+          talented, yet unpopular, traditional artists/ artesian of Rajasthan.
         </p>
         <NavLink className="readMore" to="/about">
           Read More

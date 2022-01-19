@@ -24,6 +24,7 @@ const handleLogin = async (googleData, setEditAllowed, setEmail) => {
   } else {
     setEditAllowed(false);
     setEmail("");
+    window.alert(data.message);
   }
 };
 

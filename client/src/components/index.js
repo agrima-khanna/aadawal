@@ -1,6 +1,6 @@
 import { Home } from "./Home";
 import { About } from "./About";
-import { Activities } from "./Activities";
+import { Events } from "./Events";
 import { Contact } from "./Contact";
 import { Gallery } from "./Gallery";
 import { Slideshow } from "./Slideshow";
@@ -12,7 +12,7 @@ import { Login } from "./Login";
 export {
   Home,
   About,
-  Activities,
+  Events,
   Contact,
   Gallery,
   Slideshow,
