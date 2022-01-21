@@ -1,6 +1,6 @@
 require("dotenv").config({ path: "./config.env" });
 const Db = process.env.ATLAS_URI;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 let express = require("express"),
   mongoose = require("mongoose"),
   cors = require("cors"),
@@ -58,7 +58,11 @@ app.use(logger("dev"));
 app.use(cookieParser());
 app.use(methodOverride("_method"));
 // app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 // const mongoose = require("mongoose");
 // mongoose.Promise = require("bluebird");
 

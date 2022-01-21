@@ -10,30 +10,27 @@ function getYears(n) {
 }
 const displayImgs = (activeYear, setImagesDatabase) => {
   axios
-    .get("http://localhost:5000/gallery/image/", {
-      params: {
-        year: activeYear,
-      },
-    })
+    .get("http://localhost:3000/gallery/image/display/" + activeYear)
     .then((res) => {
       const imgs = res.data.images;
       console.log(res.data.images);
       var imagesNew = [];
-
-      imgs.map((img, i) => {
-        // axios
-        //   .get("http://localhost:5000/image/filename", {
-        //     params: {
-        //       filename: img,
-        //     },
-        //   })
-        //   .then((res) => {
-        //     console.log(res);
-        imagesNew.push("http://localhost:5000/gallery/image/" + img.filename);
+      if (imgs)
+        imgs.map((img, i) => {
+          // axios
+          //   .get("http://localhost:3000/image/filename", {
+          //     params: {
+          //       filename: img,
+          //     },
+          //   })
+          //   .then((res) => {
+          //     console.log(res);
+          imagesNew.push("http://localhost:3000/gallery/image/" + img.filename);
+          setImagesDatabase({ images: imagesNew, flag: 1 });
+          // });
+        });
+      if (!imgs || imgs.length == 0)
         setImagesDatabase({ images: imagesNew, flag: 1 });
-        // });
-      });
-      if (imgs.length == 0) setImagesDatabase({ images: imagesNew, flag: 1 });
     });
 };
 export function GalleryPreview() {

@@ -32,7 +32,7 @@ const deleteImage = async (
   console.log(index);
 
   axios
-    .post("http://localhost:5000/gallery/image/delete/" + imagesNew[index].id)
+    .post("http://localhost:3000/gallery/image/delete/" + imagesNew[index].id)
     .then((res) => {
       console.log(res.data.success);
       if (res.data.success) {
@@ -42,10 +42,7 @@ const deleteImage = async (
 };
 const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
   axios
-    .get("http://localhost:5000/gallery/image/", {
-      params: {
-        year: activeYear,
-      },
+    .get("http://localhost:3000/gallery/image/display/" + activeYear, {
       onDownloadProgress: (pe) => {
         if (pe.loaded == pe.total) setProgress(false);
         else setProgress(true);
@@ -55,18 +52,19 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
       const imgs = res.data.images;
       console.log(res.data.images);
       var imagesNew = [];
-
-      imgs.map((img, i) => {
-        imagesNew.push({
-          original: "http://localhost:5000/gallery/image/" + img.filename,
-          thumbnail: "http://localhost:5000/gallery/image/" + img.filename,
-          id: img.id,
-          originalHeight: "400px",
+      if (imgs)
+        imgs.map((img, i) => {
+          imagesNew.push({
+            original: "http://localhost:3000/gallery/image/" + img.filename,
+            thumbnail: "http://localhost:3000/gallery/image/" + img.filename,
+            id: img.id,
+            originalHeight: "400px",
+          });
+          setImagesDatabase({ images: imagesNew, flag: 1 });
+          // });
         });
+      if (!imgs || imgs.length == 0)
         setImagesDatabase({ images: imagesNew, flag: 1 });
-        // });
-      });
-      if (imgs.length == 0) setImagesDatabase({ images: imagesNew, flag: 1 });
     });
 };
 export function Gallery({ editAllowed }) {

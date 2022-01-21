@@ -27,7 +27,7 @@ module.exports = (upload) => {
         POST: Upload multiple files upto 3
     */
   imageRouter.post("/upload", upload.array("galleryImg"), (req, res, next) => {
-    // console.log(req.files);
+    console.log(req.files);
     const arr = req.files;
     var cnt = 0;
     arr.map((file) => {
@@ -54,10 +54,10 @@ module.exports = (upload) => {
   /*
         GET: Fetches all the files in the uploads collection
     */
-  imageRouter.route("/").get((req, res, next) => {
+  imageRouter.get("/display/:year", (req, res, next) => {
     var images = [];
-
-    Image.find({ year: req.query.year }, function (err, docs) {
+    console.log("entered");
+    Image.find({ year: req.params.year }, function (err, docs) {
       console.log(docs);
       docs.map((file) => {
         images.push({
@@ -68,7 +68,7 @@ module.exports = (upload) => {
       res.status(200).json({
         success: true,
         images: images,
-        year: req.query.year,
+        year: req.params.year,
       });
     });
   });

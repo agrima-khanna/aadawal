@@ -7,7 +7,7 @@ const responseGoogle = (response) => {
   console.log(response);
 };
 const handleLogin = async (googleData, setEditAllowed, setEmail) => {
-  const res = await fetch("http://localhost:5000/gallery/api/google", {
+  const res = await fetch("http://localhost:3000/gallery/api/google", {
     method: "POST",
     body: JSON.stringify({
       token: googleData.tokenId,
