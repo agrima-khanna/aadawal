@@ -2,12 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "./packages/server/server.js",
-      "use": "@vercel/nodemon"
-    },
-    {
-      "src": "./packages/client/build",
-      "use": "@vercel/static"
+      "src": "./",
+      "use": "@vercel/yarn"
     }
   ],
 
