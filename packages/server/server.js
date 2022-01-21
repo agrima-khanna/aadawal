@@ -1,4 +1,5 @@
-require("dotenv").config({ path: "./config.env" });
+if (process.env.NODE_ENV !== "production")
+  require("dotenv").config({ path: "./config.env" });
 const Db = process.env.ATLAS_URI;
 const port = process.env.PORT || 3000;
 let express = require("express"),
@@ -60,7 +61,7 @@ app.use(methodOverride("_method"));
 // app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("/", function (req, res) {
+app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 // const mongoose = require("mongoose");

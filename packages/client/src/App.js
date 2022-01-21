@@ -78,7 +78,7 @@ class App extends Component {
   };
   render() {
     return (
-      <Router className="container">
+      <Router className="container" basename="/">
         <div className="app">
           <div className="menu-header">
             <img className="logo" src={logo} alt="Logo" />
