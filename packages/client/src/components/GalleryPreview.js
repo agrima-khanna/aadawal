@@ -10,7 +10,7 @@ function getYears(n) {
 }
 const displayImgs = (activeYear, setImagesDatabase) => {
   axios
-    .get("http://localhost:5000/image/", {
+    .get("http://localhost:5000/gallery/image/", {
       params: {
         year: activeYear,
       },
@@ -29,7 +29,7 @@ const displayImgs = (activeYear, setImagesDatabase) => {
         //   })
         //   .then((res) => {
         //     console.log(res);
-        imagesNew.push("http://localhost:5000/image/" + img.filename);
+        imagesNew.push("http://localhost:5000/gallery/image/" + img.filename);
         setImagesDatabase({ images: imagesNew, flag: 1 });
         // });
       });

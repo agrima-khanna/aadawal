@@ -32,7 +32,7 @@ const deleteImage = async (
   console.log(index);
 
   axios
-    .post("http://localhost:5000/image/delete/" + imagesNew[index].id)
+    .post("http://localhost:5000/gallery/image/delete/" + imagesNew[index].id)
     .then((res) => {
       console.log(res.data.success);
       if (res.data.success) {
@@ -42,7 +42,7 @@ const deleteImage = async (
 };
 const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
   axios
-    .get("http://localhost:5000/image/", {
+    .get("http://localhost:5000/gallery/image/", {
       params: {
         year: activeYear,
       },
@@ -58,8 +58,8 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
 
       imgs.map((img, i) => {
         imagesNew.push({
-          original: "http://localhost:5000/image/" + img.filename,
-          thumbnail: "http://localhost:5000/image/" + img.filename,
+          original: "http://localhost:5000/gallery/image/" + img.filename,
+          thumbnail: "http://localhost:5000/gallery/image/" + img.filename,
           id: img.id,
           originalHeight: "400px",
         });
@@ -102,9 +102,10 @@ export function Gallery({ editAllowed }) {
         >
           Years
         </div>
-        {years.map((year) => {
+        {years.map((year, i) => {
           return (
             <button
+              key={i}
               onClick={() => {
                 if (activeYear != year) switchYear(year);
               }}

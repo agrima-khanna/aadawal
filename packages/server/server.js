@@ -80,9 +80,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.use("/public", express.static("public"));
+// app.use("/public", express.static("public"));
 
-app.use("/api", api);
+app.use("/gallery/api", api);
 // app.use(require("./routes/index"));
 // app.use("/auth", require("./routes/auth"));
 
@@ -112,7 +112,7 @@ const storage = new GridFsStorage({
 
 const upload = multer({ storage });
 
-app.use("/image", imageRouter(upload));
+app.use("/gallery/image", imageRouter(upload));
 
 // // catch 404 and forward to error handler
 // app.use(function (req, res, next) {

@@ -79,9 +79,9 @@ Followed by discussion on significant treasure of old manuscripts and their wort
   return (
     <div className="events">
       <div className="sectionNav">
-        {sections.map((section) => {
+        {sections.map((section, i) => {
           return (
-            <a className="sectionNavBtn" href={`#${section.id}`}>
+            <a key={i} className="sectionNavBtn" href={`#${section.id}`}>
               {section.name}
             </a>
           );
@@ -89,31 +89,33 @@ Followed by discussion on significant treasure of old manuscripts and their wort
       </div>
 
       <table>
-        {sections.map((section, index) => {
-          return (
-            <tr>
-              <td id={section.id}>
-                <div
-                  style={{
-                    fontWeight: "bolder",
-                    fontSize: "x-large",
-                    color: "#f05454",
-                  }}
-                >
-                  {section.name}
-                </div>
-                <br />
-
-                <div>
+        <tbody>
+          {sections.map((section, i) => {
+            return (
+              <tr key={i}>
+                <td id={section.id}>
                   <div
-                    style={{ textAlign: "left", fontSize: "large" }}
-                    dangerouslySetInnerHTML={{ __html: section.content }}
-                  ></div>
-                </div>
-              </td>
-            </tr>
-          );
-        })}
+                    style={{
+                      fontWeight: "bolder",
+                      fontSize: "x-large",
+                      color: "#f05454",
+                    }}
+                  >
+                    {section.name}
+                  </div>
+                  <br />
+
+                  <div>
+                    <div
+                      style={{ textAlign: "left", fontSize: "large" }}
+                      dangerouslySetInnerHTML={{ __html: section.content }}
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <GoToTop />
     </div>

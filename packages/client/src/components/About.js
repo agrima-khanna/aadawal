@@ -1,6 +1,11 @@
-import React from "react";
+import { useLocation } from "react-router-dom";
+
+import React, { useEffect } from "react";
 import { GoToTop } from ".";
-export function About() {
+export function About(props) {
+  useEffect(() => {
+    if (props != null) console.log(props);
+  });
   return (
     <div>
       <div className="about">

@@ -26,6 +26,19 @@ class App extends Component {
     this.state = {
       activeLink: "Home",
       loggedIn: false,
+      routes: [
+        { name: "HOME", to: "/", nameCamelCase: "Home" },
+        { name: "ABOUT US", to: "/about", nameCamelCase: "About Us" },
+
+        { name: "EVENTS", to: "/events", nameCamelCase: "Events" },
+
+        { name: "PHOTO GALLERY", to: "/gallery", nameCamelCase: "Gallery" },
+
+        { name: "CONTACT US", to: "/contact", nameCamelCase: "Contact Us" },
+
+        { name: "MOTHER NGO", to: "/ngo", nameCamelCase: "Mother NGO" },
+      ],
+      Call: otherIcons["Call"],
     };
   }
   componentDidMount() {
@@ -47,23 +60,11 @@ class App extends Component {
   setLoggedIn = (val) => {
     this.setState((prevState) => ({ ...prevState, loggedIn: val }));
   };
-  render() {
-    const routes = [
-      { name: "HOME", to: "/", nameCamelCase: "Home" },
-      { name: "ABOUT US", to: "/about", nameCamelCase: "About Us" },
-
-      { name: "EVENTS", to: "/events", nameCamelCase: "Events" },
-
-      { name: "PHOTO GALLERY", to: "/gallery", nameCamelCase: "Gallery" },
-
-      { name: "CONTACT US", to: "/contact", nameCamelCase: "Contact Us" },
-
-      { name: "MOTHER NGO", to: "/ngo", nameCamelCase: "Mother NGO" },
-    ];
-    const changeState = (name) => {
-      this.setState({ activeLink: name });
-    };
-    var socialMediaIcons = [];
+  changeState = (name) => {
+    this.setState({ activeLink: name });
+  };
+  socialMediaIcons = () => {
+    const arr = [];
     for (const key in icons) {
       var obj = { icon: icons[key], link: "" };
       if (key === "Facebook") obj.link = "https://www.facebook.com/aadawal/";
@@ -71,10 +72,11 @@ class App extends Component {
         obj.link = "https://instagram.com/rsmaadawal?utm_medium=copy_link";
       else obj.link = "https://youtube.com/channel/UCwsoPqn_7N67QIMrDD55yiA";
 
-      socialMediaIcons.push(obj);
+      arr.push(obj);
     }
-    const Call = otherIcons["Call"];
-
+    return arr;
+  };
+  render() {
     return (
       <Router className="container">
         <div className="app">
@@ -82,17 +84,15 @@ class App extends Component {
             <img className="logo" src={logo} alt="Logo" />
 
             <div className="menuBtns">
-              {routes.map((route, i) => {
+              {this.state.routes.map((route, i) => {
                 return (
                   <button key={i}>
                     <NavLink
-                      to={route.to}
+                      to={{
+                        pathname: route.to,
+                        state: { changeState: this.changeState },
+                      }}
                       className={({ isActive }) => {
-                        if (
-                          isActive &&
-                          this.state.activeLink !== route.nameCamelCase
-                        )
-                          changeState(route.nameCamelCase);
                         return isActive ? "menuBtn menuBtnActive" : "menuBtn";
                       }}
                     >
@@ -133,12 +133,12 @@ class App extends Component {
         <footer>
           <div>© Copyright Aadawal. All rights reserved.</div>
           <div className="call">
-            <Call />
+            <this.state.Call />
             +91 94147-37972, +91 94132-63136
           </div>
           <div className="follow">
             Follow us on
-            {socialMediaIcons.map((icon, i) => {
+            {this.socialMediaIcons().map((icon, i) => {
               return (
                 <a
                   href={icon.link}

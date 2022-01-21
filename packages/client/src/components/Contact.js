@@ -4,7 +4,7 @@ import { GoToTop } from ".";
 export function Contact() {
   return (
     <div className="contactUs">
-      <div class="address">
+      <div className="address">
         <div style={{ fontWeight: "bold" }}>Address</div>
         <div>AMI SANSTHAN 251, Sector-11, Hiran Magri Udaipur- 313001</div>
       </div>

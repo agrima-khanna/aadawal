@@ -157,64 +157,66 @@ export function Ngo() {
   return (
     <div className="ngo">
       <div className="sectionNav">
-        {sections.map((section) => {
+        {sections.map((section, i) => {
           return (
-            <a className="sectionNavBtn" href={`#${section.id}`}>
+            <a key={i} className="sectionNavBtn" href={`#${section.id}`}>
               {section.name}
             </a>
           );
         })}
       </div>
       <table>
-        <tr>
-          <td
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              backgroundColor: "#a91d1d",
-              borderColor: "#a91d1d",
-              padding: "16px",
-            }}
-          >
-            <ActivitiesGallery flag={true} />
-          </td>
-        </tr>
-        {sections.map((section, index) => {
-          return (
-            <tr>
-              <td id={section.id}>
-                <div
-                  style={{
-                    fontWeight: "bolder",
-                    fontSize: "x-large",
-                    color: "#f05454",
-                  }}
-                >
-                  {section.name}
-                </div>
-                <br />
-
-                <div>
-                  {section.hasOwnProperty("photo") && (
-                    <img
-                      style={{
-                        float: `${index % 2 ? "left" : "right"}`,
-                        margin: "8px",
-                      }}
-                      className="sectionPhoto"
-                      src={section.photo}
-                      alt={section.id}
-                    ></img>
-                  )}
+        <tbody>
+          <tr>
+            <td
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                backgroundColor: "#a91d1d",
+                borderColor: "#a91d1d",
+                padding: "16px",
+              }}
+            >
+              <ActivitiesGallery flag={true} />
+            </td>
+          </tr>
+          {sections.map((section, index) => {
+            return (
+              <tr key={index}>
+                <td id={section.id}>
                   <div
-                    style={{ textAlign: "left", fontSize: "large" }}
-                    dangerouslySetInnerHTML={{ __html: section.content }}
-                  ></div>
-                </div>
-              </td>
-            </tr>
-          );
-        })}
+                    style={{
+                      fontWeight: "bolder",
+                      fontSize: "x-large",
+                      color: "#f05454",
+                    }}
+                  >
+                    {section.name}
+                  </div>
+                  <br />
+
+                  <div>
+                    {section.hasOwnProperty("photo") && (
+                      <img
+                        style={{
+                          float: `${index % 2 ? "left" : "right"}`,
+                          margin: "8px",
+                        }}
+                        className="sectionPhoto"
+                        src={section.photo}
+                        alt={section.id}
+                      ></img>
+                    )}
+                    <div
+                      style={{ textAlign: "left", fontSize: "large" }}
+                      dangerouslySetInnerHTML={{ __html: section.content }}
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <GoToTop />
     </div>
