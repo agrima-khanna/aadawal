@@ -31,7 +31,7 @@ const deleteImage = async (
   var imagesNew = imagesDatabase.images;
   console.log(index);
 
-  axios.post("/image/delete/" + imagesNew[index].id).then((res) => {
+  axios.get("/image/delete/" + imagesNew[index].id).then((res) => {
     console.log(res.data.success);
     if (res.data.success) {
       displayImgs(activeYear, setImagesDatabase, setProgress);

@@ -26,7 +26,7 @@ module.exports = (upload) => {
   /*
         POST: Upload multiple files upto 3
     */
-  imageRouter.post("/upload", upload.array("galleryImg"), (req, res, next) => {
+  imageRouter.get("/upload", upload.array("galleryImg"), (req, res, next) => {
     console.log(req.files);
     const arr = req.files;
     var cnt = 0;
@@ -84,7 +84,7 @@ module.exports = (upload) => {
   /*
         DELETE: Delete a particular file by an ID
     */
-  imageRouter.route("/delete/:id").post((req, res, next) => {
+  imageRouter.route("/delete/:id").get((req, res, next) => {
     console.log(req.params.id);
     gfs.delete(new mongoose.Types.ObjectId(req.params.id), (err, data) => {
       if (err) {

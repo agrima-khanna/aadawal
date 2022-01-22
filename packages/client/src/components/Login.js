@@ -8,7 +8,7 @@ const responseGoogle = (response) => {
 };
 const handleLogin = async (googleData, setEditAllowed, setEmail) => {
   const res = await fetch("/api/google", {
-    method: "POST",
+    method: "GET",
     body: JSON.stringify({
       token: googleData.tokenId,
     }),
