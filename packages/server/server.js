@@ -43,39 +43,11 @@ app.use(
   })
 );
 
-// const app = express();
-
-// view engine setup
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "jade");
-// app.get("/", function (req, res) {
-//   res.sendFile(path.join(__dirname, "../client/build/public/index.html"));
-// });
-
-// app.use(express.static(path.join(__dirname, "../client/build")));
 app.use(logger("dev"));
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(methodOverride("_method"));
-// app.use(express.static(path.join(__dirname, "public")));
-
-// const mongoose = require("mongoose");
-// mongoose.Promise = require("bluebird");
-
-// const url = config.mongoURI;
-// const connect = mongoose.connect(url, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-// connect to the database
-// connect.then(
-//   () => {
-//     console.log("Connected to database: GridApp");
-//   },
-//   (err) => console.log(err)
-// );
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -84,14 +56,7 @@ app.use(cors());
 // app.use("/public", express.static("public"));
 
 app.use("/api", api);
-// app.use(require("./routes/index"));
-// app.use("/auth", require("./routes/auth"));
 
-/* 
-    GridFs Configuration
-*/
-
-// create storage engine
 const storage = new GridFsStorage({
   url: Db,
   file: (req, file) => {
@@ -115,21 +80,6 @@ const upload = multer({ storage });
 
 app.use("/image", imageRouter(upload));
 
-// // catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//   next(createError(404));
-// });
-
-// // error handler
-// app.use(function (err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get("env") === "development" ? err : {};
-
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render("error");
-// });
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("/*", function (req, res) {
