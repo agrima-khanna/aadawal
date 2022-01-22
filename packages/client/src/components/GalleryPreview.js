@@ -9,31 +9,27 @@ function getYears(n) {
   return years;
 }
 const displayImgs = (activeYear, setImagesDatabase) => {
-  axios
-    .get("http://aadawal.vercel.app/gallery/image/display/" + activeYear)
-    .then((res) => {
-      const imgs = res.data.images;
-      console.log(res.data.images);
-      var imagesNew = [];
-      if (imgs)
-        imgs.map((img, i) => {
-          // axios
-          //   .get("http://localhost:3000/image/filename", {
-          //     params: {
-          //       filename: img,
-          //     },
-          //   })
-          //   .then((res) => {
-          //     console.log(res);
-          imagesNew.push(
-            "http://aadawal.vercel.app/gallery/image/" + img.filename
-          );
-          setImagesDatabase({ images: imagesNew, flag: 1 });
-          // });
-        });
-      if (!imgs || imgs.length == 0)
+  axios.get("/gallery/image/display/" + activeYear).then((res) => {
+    const imgs = res.data.images;
+    console.log(res.data.images);
+    var imagesNew = [];
+    if (imgs)
+      imgs.map((img, i) => {
+        // axios
+        //   .get("http://localhost:3000/image/filename", {
+        //     params: {
+        //       filename: img,
+        //     },
+        //   })
+        //   .then((res) => {
+        //     console.log(res);
+        imagesNew.push("/gallery/image/" + img.filename);
         setImagesDatabase({ images: imagesNew, flag: 1 });
-    });
+        // });
+      });
+    if (!imgs || imgs.length == 0)
+      setImagesDatabase({ images: imagesNew, flag: 1 });
+  });
 };
 export function GalleryPreview() {
   const [activeYear, setActiveYear] = useState(new Date().getFullYear());

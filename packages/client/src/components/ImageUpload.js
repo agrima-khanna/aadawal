@@ -30,7 +30,7 @@ export function ImageUpload({
     var flag = 0;
 
     axios
-      .post("http://localhost:3000/gallery/image/upload", formData, {
+      .post("/gallery/image/upload", formData, {
         onUploadProgress: (pe) => {
           if (pe.loaded == pe.total) setProgress(false);
           else setProgress(true);

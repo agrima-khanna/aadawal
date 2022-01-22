@@ -7,7 +7,7 @@ const responseGoogle = (response) => {
   console.log(response);
 };
 const handleLogin = async (googleData, setEditAllowed, setEmail) => {
-  const res = await fetch("http://aadawal.vercel.app/gallery/api/google", {
+  const res = await fetch("/gallery/api/google", {
     method: "POST",
     body: JSON.stringify({
       token: googleData.tokenId,

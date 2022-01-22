@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://aadawal.vercel.app/",
+  "homepage": "https://aadawal-agrima-khanna.vercel.app",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@emotion/react": "^11.7.1",
