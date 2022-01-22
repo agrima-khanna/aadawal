@@ -32,7 +32,9 @@ const deleteImage = async (
   console.log(index);
 
   axios
-    .post("http://localhost:3000/gallery/image/delete/" + imagesNew[index].id)
+    .post(
+      "http://aadawal.vercel.app/gallery/image/delete/" + imagesNew[index].id
+    )
     .then((res) => {
       console.log(res.data.success);
       if (res.data.success) {
@@ -42,7 +44,7 @@ const deleteImage = async (
 };
 const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
   axios
-    .get("http://localhost:3000/gallery/image/display/" + activeYear, {
+    .get("http://aadawal.vercel.app/gallery/image/display/" + activeYear, {
       onDownloadProgress: (pe) => {
         if (pe.loaded == pe.total) setProgress(false);
         else setProgress(true);
@@ -55,8 +57,9 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
       if (imgs)
         imgs.map((img, i) => {
           imagesNew.push({
-            original: "http://localhost:3000/gallery/image/" + img.filename,
-            thumbnail: "http://localhost:3000/gallery/image/" + img.filename,
+            original: "http://aadawal.vercel.app/gallery/image/" + img.filename,
+            thumbnail:
+              "http://aadawal.vercel.app/gallery/image/" + img.filename,
             id: img.id,
             originalHeight: "400px",
           });

@@ -10,7 +10,7 @@ function getYears(n) {
 }
 const displayImgs = (activeYear, setImagesDatabase) => {
   axios
-    .get("http://localhost:3000/gallery/image/display/" + activeYear)
+    .get("http://aadawal.vercel.app/gallery/image/display/" + activeYear)
     .then((res) => {
       const imgs = res.data.images;
       console.log(res.data.images);
@@ -25,7 +25,9 @@ const displayImgs = (activeYear, setImagesDatabase) => {
           //   })
           //   .then((res) => {
           //     console.log(res);
-          imagesNew.push("http://localhost:3000/gallery/image/" + img.filename);
+          imagesNew.push(
+            "http://aadawal.vercel.app/gallery/image/" + img.filename
+          );
           setImagesDatabase({ images: imagesNew, flag: 1 });
           // });
         });
