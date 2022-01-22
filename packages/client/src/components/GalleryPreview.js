@@ -9,7 +9,7 @@ function getYears(n) {
   return years;
 }
 const displayImgs = (activeYear, setImagesDatabase) => {
-  axios.post("/gallery/image/display/" + activeYear).then((res) => {
+  axios.post("/image/display/" + activeYear).then((res) => {
     const imgs = res.data.images;
     console.log(res.data.images);
     var imagesNew = [];
