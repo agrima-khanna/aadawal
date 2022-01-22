@@ -54,7 +54,7 @@ module.exports = (upload) => {
   /*
         GET: Fetches all the files in the uploads collection
     */
-  imageRouter.route("/display/:year").post((req, res, next) => {
+  imageRouter.route("/display/:year").get((req, res, next) => {
     var images = [];
     console.log(req);
     Image.find({ year: req.params.year }, function (err, docs) {
