@@ -26,7 +26,7 @@ module.exports = (upload) => {
   /*
         POST: Upload multiple files upto 3
     */
-  imageRouter.get("/upload", upload.array("galleryImg"), (req, res, next) => {
+  imageRouter.post("/upload", upload.array("galleryImg"), (req, res, next) => {
     console.log(req.files);
     const arr = req.files;
     var cnt = 0;
@@ -54,7 +54,7 @@ module.exports = (upload) => {
   /*
         GET: Fetches all the files in the uploads collection
     */
-  imageRouter.route("/display/:year").get((req, res, next) => {
+  imageRouter.route("/display/:year").post((req, res, next) => {
     var images = [];
     console.log(req);
     Image.find({ year: req.params.year }, function (err, docs) {
@@ -75,7 +75,7 @@ module.exports = (upload) => {
   /* 
         GET: Fetches a particular image and render on browser
     */
-  imageRouter.route("/:filename").get((req, res, next) => {
+  imageRouter.route("/:filename").post((req, res, next) => {
     gfs.find({ filename: req.params.filename }).toArray((err, files) => {
       // render image to browser
       gfs.openDownloadStreamByName(req.params.filename).pipe(res);
@@ -84,7 +84,7 @@ module.exports = (upload) => {
   /*
         DELETE: Delete a particular file by an ID
     */
-  imageRouter.route("/delete/:id").get((req, res, next) => {
+  imageRouter.route("/delete/:id").post((req, res, next) => {
     console.log(req.params.id);
     gfs.delete(new mongoose.Types.ObjectId(req.params.id), (err, data) => {
       if (err) {

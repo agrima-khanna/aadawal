@@ -10,7 +10,7 @@ const client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_SECRET
 );
 let User = require("../models/Users");
-router.get("/google", async (req, res) => {
+router.post("/google", async (req, res) => {
   const { token } = req.body;
   try {
     const ticket = await client.verifyIdToken({

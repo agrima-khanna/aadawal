@@ -31,7 +31,7 @@ const deleteImage = async (
   var imagesNew = imagesDatabase.images;
   console.log(index);
 
-  axios.get("/image/delete/" + imagesNew[index].id).then((res) => {
+  axios.post("/image/delete/" + imagesNew[index].id).then((res) => {
     console.log(res.data.success);
     if (res.data.success) {
       displayImgs(activeYear, setImagesDatabase, setProgress);
@@ -40,7 +40,7 @@ const deleteImage = async (
 };
 const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
   axios
-    .get("/image/display/" + activeYear, {
+    .post("/image/display/" + activeYear, {
       onDownloadProgress: (pe) => {
         if (pe.loaded == pe.total) setProgress(false);
         else setProgress(true);
