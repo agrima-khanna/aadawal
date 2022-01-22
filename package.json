@@ -9,7 +9,7 @@
     "client": "yarn workspace client start",
     "server": "yarn workspace server start",
     "start": "yarn workspace server start",
-    "build": "syarn workspace client build"
+    "build": "yarn workspace client build"
   },
   "dependencies": {
     "concurrently": "4.1.0"
