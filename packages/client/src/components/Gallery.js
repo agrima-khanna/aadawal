@@ -54,8 +54,8 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
       if (imgs)
         imgs.map((img, i) => {
           imagesNew.push({
-            original: "http://localhost:3000/gallery/image/" + img.filename,
-            thumbnail: "http://localhost:3000/gallery/image/" + img.filename,
+            original: "/gallery/image/" + img.filename,
+            thumbnail: "/gallery/image/" + img.filename,
             id: img.id,
             originalHeight: "400px",
           });
