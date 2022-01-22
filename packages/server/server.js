@@ -130,11 +130,11 @@ app.use("/image", imageRouter(upload));
 //   res.status(err.status || 500);
 //   res.render("error");
 // });
-// app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-// });
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 const server = app.listen(port, () => {
   console.log("Connected to port " + port);
 });
