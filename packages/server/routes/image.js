@@ -75,7 +75,7 @@ module.exports = (upload) => {
   /* 
         GET: Fetches a particular image and render on browser
     */
-  imageRouter.route("/:filename").post((req, res, next) => {
+  imageRouter.route("/:filename").get((req, res, next) => {
     gfs.find({ filename: req.params.filename }).toArray((err, files) => {
       // render image to browser
       gfs.openDownloadStreamByName(req.params.filename).pipe(res);
