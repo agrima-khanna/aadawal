@@ -15,5 +15,6 @@
     "concurrently": "4.1.0"
   },
   "author": "Agrima <agrimakhanna5@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@3.1.1"
 }

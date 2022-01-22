@@ -59,11 +59,7 @@ app.use(logger("dev"));
 app.use(cookieParser());
 app.use(methodOverride("_method"));
 // app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
 // const mongoose = require("mongoose");
 // mongoose.Promise = require("bluebird");
 
@@ -134,7 +130,11 @@ app.use("/gallery/image", imageRouter(upload));
 //   res.status(err.status || 500);
 //   res.render("error");
 // });
+app.use(express.static(path.join(__dirname, "../client/build")));
 
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 const server = app.listen(port, () => {
   console.log("Connected to port " + port);
 });

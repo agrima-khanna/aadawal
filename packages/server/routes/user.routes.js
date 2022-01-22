@@ -35,7 +35,7 @@ let express = require("express"),
 // });
 
 // User model
-let Gallery = require("../models/Gallery");
+// let Gallery = require("../models/Gallery");
 
 // router.post("/user-profile", upload.single("galleryImg"), (req, res, next) => {
 //   // console.log(req.body);
@@ -72,19 +72,19 @@ let Gallery = require("../models/Gallery");
 //     }
 //   );
 // });
-router.post("/delete", (req, res, next) => {
-  const query = { year: req.body.year };
-  const newData = { images: req.body.images };
+// router.post("/delete", (req, res, next) => {
+//   const query = { year: req.body.year };
+//   const newData = { images: req.body.images };
 
-  Gallery.findOneAndUpdate(query, newData, function (err, doc) {
-    // console.log(doc);
-    if (err)
-      return res.status(500).json({
-        error: err,
-      });
-    return res.status(201).json({ data: doc });
-  });
-});
+//   Gallery.findOneAndUpdate(query, newData, function (err, doc) {
+//     // console.log(doc);
+//     if (err)
+//       return res.status(500).json({
+//         error: err,
+//       });
+//     return res.status(201).json({ data: doc });
+//   });
+// });
 // router.get("/", (req, res, next) => {
 //   Gallery.find().then((data) => {
 //     // console.log(data);

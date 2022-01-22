@@ -40,7 +40,7 @@ const deleteImage = async (
 };
 const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
   axios
-    .get("/gallery/image/display/" + activeYear, {
+    .post("/gallery/image/display/" + activeYear, {
       onDownloadProgress: (pe) => {
         if (pe.loaded == pe.total) setProgress(false);
         else setProgress(true);
@@ -48,13 +48,14 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
     })
     .then((res) => {
       const imgs = res.data.images;
+      console.log(res);
       console.log(res.data.images);
       var imagesNew = [];
       if (imgs)
         imgs.map((img, i) => {
           imagesNew.push({
-            original: "/gallery/image/" + img.filename,
-            thumbnail: "/gallery/image/" + img.filename,
+            original: "http://localhost:3000/gallery/image/" + img.filename,
+            thumbnail: "http://localhost:3000/gallery/image/" + img.filename,
             id: img.id,
             originalHeight: "400px",
           });
