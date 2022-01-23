@@ -1,7 +1,7 @@
 const express = require("express");
 const imageRouter = express.Router();
 const mongoose = require("mongoose");
-const Image = require("../models/image");
+const Image = require("../models/Image");
 var Grid = require("gridfs-stream");
 const fs = require("fs");
 Grid.mongo = mongoose.mongo;
