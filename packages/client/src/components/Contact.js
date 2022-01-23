@@ -6,11 +6,15 @@ export function Contact() {
     <div className="contactUs">
       <div className="address">
         <div style={{ fontWeight: "bold" }}>Address</div>
-        <div>AMI SANSTHAN 251, Sector-11, Hiran Magri Udaipur- 313001</div>
+        <div> Udaipur, Rajasthan</div>
       </div>
       <div className="contact">
-        <div style={{ fontWeight: "bold" }}>Contact</div>+91 94147-37972, +91
-        94132-63136
+        <div style={{ fontWeight: "bold" }}>Contact</div>+91 9783730979, +91
+        9414737972
+      </div>
+      <div className="email">
+        <div style={{ fontWeight: "bold" }}>Email</div>
+        rsmaadawal@gmail.com
       </div>
       <GoToTop />
     </div>

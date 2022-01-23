@@ -72,6 +72,7 @@ export function GalleryPreview() {
         <Slideshow
           images={imagesDatabase.images}
           properties={{ indicators: true, duration: 2000, arrows: false }}
+          category={"preview"}
         />
       </div>
 

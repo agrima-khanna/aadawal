@@ -10,7 +10,13 @@ export function Slideshow(props) {
       {props.images.map((image, i) => {
         return (
           <div key={i} className="each-slide">
-            <img src={image} alt="slideImg" />
+            <img
+              className={
+                props.category === "quotes" ? "quotesImg" : "previewImg"
+              }
+              src={image}
+              alt="slideImg"
+            />
           </div>
         );
       })}

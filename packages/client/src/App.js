@@ -90,7 +90,7 @@ class App extends Component {
                     <NavLink
                       to={{
                         pathname: route.to,
-                        state: { changeState: this.changeState },
+                        userProps: { changeState: this.changeState },
                       }}
                       className={({ isActive }) => {
                         return isActive ? "menuBtn menuBtnActive" : "menuBtn";
@@ -134,7 +134,7 @@ class App extends Component {
           <div>© Copyright Aadawal. All rights reserved.</div>
           <div className="call">
             <this.state.Call />
-            +91 94147-37972, +91 94132-63136
+            +91 9783730979, +91 9414737972
           </div>
           <div className="follow">
             Follow us on

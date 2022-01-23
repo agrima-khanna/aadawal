@@ -5,9 +5,21 @@ import { Slideshow, GalleryPreview } from ".";
 import { GoToTop } from ".";
 
 import ngo_logo from "./ngo_logo.jpg";
+import q1 from "./quotes/q1.png";
+import q2 from "./quotes/q2.png";
+import q3 from "./quotes/q3.png";
+import q4 from "./quotes/q4.png";
+import q5 from "./quotes/q5.png";
+import q6 from "./quotes/q6.png";
+import q7 from "./quotes/q7.png";
+import q8 from "./quotes/q8.png";
+import q9 from "./quotes/q9.png";
+import q10 from "./quotes/q10.png";
+import q11 from "./quotes/q11.png";
 
 export function Home() {
   const images = [];
+  const quotes = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11];
   return (
     <div className="home">
       <div className="about">
@@ -56,8 +68,9 @@ export function Home() {
       </div>
       <div className="quotesPreview">
         <Slideshow
-          images={images}
+          images={quotes}
           properties={{ indicators: true, duration: 2000 }}
+          category={"quotes"}
         />
       </div>
       <GoToTop />

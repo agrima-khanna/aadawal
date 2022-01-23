@@ -5,7 +5,6 @@ import { GoToTop, ImageUpload, Login } from ".";
 import axios from "axios";
 import { confirm } from "react-confirm-box";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 
 function getYears(n) {
   var current = new Date().getFullYear();

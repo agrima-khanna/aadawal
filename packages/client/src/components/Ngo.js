@@ -21,6 +21,7 @@ function ActivitiesGallery(props) {
             duration: 2000,
             arrows: false,
           }}
+          category={"ngo"}
         />
       </div>
     );

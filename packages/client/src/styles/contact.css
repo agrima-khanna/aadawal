@@ -5,15 +5,18 @@
   padding: 240px;
   padding-top: 10px;
 }
-.address {
+.address,
+.contact {
   padding: 12px;
   border-bottom: solid 0.5px gray;
   padding: 12px;
 }
-.address:hover,
-.contact:hover {
-  background-color: #f6f2d4;
-}
-.contact {
+.email {
   padding: 12px;
+}
+
+.address:hover,
+.contact:hover,
+.email:hover {
+  background-color: #f6f2d4;
 }

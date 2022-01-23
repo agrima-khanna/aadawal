@@ -1,6 +1,6 @@
-table,
+/*table,
 tr,
-/* td {
+ td {
   border: solid 0.5px gray;
   border-collapse: collapse;
 } */
@@ -44,7 +44,7 @@ td {
 }
 .activities {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 .activitiesGallery {
   width: 52vw;

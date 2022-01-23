@@ -3,8 +3,10 @@ import { useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 import { GoToTop } from ".";
 export function About(props) {
+  let location = useLocation();
+
   useEffect(() => {
-    if (props != null) console.log(props);
+    console.log(location);
   });
   return (
     <div>
