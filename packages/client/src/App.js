@@ -90,7 +90,6 @@ class App extends Component {
                     <NavLink
                       to={{
                         pathname: route.to,
-                        userProps: { changeState: this.changeState },
                       }}
                       className={({ isActive }) => {
                         return isActive ? "menuBtn menuBtnActive" : "menuBtn";
@@ -117,16 +116,41 @@ class App extends Component {
               />
             </div>
             <Routes>
-              <Route exact path="/" element={<Home />}></Route>
-              <Route exact path="/about" element={<About />}></Route>
-              <Route exact path="/events" element={<Events />}></Route>
+              <Route
+                exact
+                path="/"
+                element={<Home changeState={this.changeState} />}
+              ></Route>
+              <Route
+                exact
+                path="/about"
+                element={<About changeState={this.changeState} />}
+              ></Route>
+              <Route
+                exact
+                path="/events"
+                element={<Events changeState={this.changeState} />}
+              ></Route>
               <Route
                 exact
                 path="/gallery"
-                element={<Gallery editAllowed={this.state.loggedIn} />}
+                element={
+                  <Gallery
+                    editAllowed={this.state.loggedIn}
+                    changeState={this.changeState}
+                  />
+                }
               ></Route>
-              <Route exact path="/contact" element={<Contact />}></Route>
-              <Route exact path="/ngo" element={<Ngo />}></Route>
+              <Route
+                exact
+                path="/contact"
+                element={<Contact changeState={this.changeState} />}
+              ></Route>
+              <Route
+                exact
+                path="/ngo"
+                element={<Ngo changeState={this.changeState} />}
+              ></Route>
             </Routes>
           </div>
         </div>
@@ -158,19 +182,3 @@ class App extends Component {
 }
 
 export default App;
-// import React, { Component } from "react";
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "./App.css";
-// import FilesUploadComponent from "./components/files-upload-component";
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <FilesUploadComponent />
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;

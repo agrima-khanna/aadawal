@@ -1,12 +1,21 @@
-import { useLocation } from "react-router-dom";
-
 import React, { useEffect } from "react";
-import { GoToTop } from ".";
-export function About(props) {
-  let location = useLocation();
+import { GoToTop, Slideshow } from ".";
+import "../styles/about.css";
+import img2 from "./about/img2.jpg";
+import img3 from "./about/img3.jpg";
+import img4 from "./about/img4.jpg";
+import img5 from "./about/img5.jpg";
+import img6 from "./about/img6.jpg";
+import img7 from "./about/img7.jpg";
+
+import img9 from "./about/img9.jpg";
+
+import img13 from "./about/img13.jpg";
+export function About({ changeState }) {
+  const images = [img2, img3, img4, img5, img6, img7, img9, img13];
 
   useEffect(() => {
-    console.log(location);
+    changeState("About Us");
   });
   return (
     <div>
@@ -25,7 +34,15 @@ export function About(props) {
         required more than ever. It is a great platform promoting our tribal
         culture, helping it reach people across the globe and enhancing tourism
         in present scenario.
-        <br /> <br />
+      </div>
+      <div className="aboutImgPreview">
+        <Slideshow
+          images={images}
+          properties={{ indicators: true, duration: 2000, arrows: false }}
+          category={"about"}
+        />
+      </div>
+      <div className="about">
         In the festival sessions are organized on Rajasthan’s art, culture,
         literature, cinema, tribal tradition, wooden toys, heritage, play,
         visual art, book launching, guest lectures, etc. A showcase of “PERAVO”

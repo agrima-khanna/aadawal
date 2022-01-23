@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import "../styles/gallery.css";
-
 export function ImageUpload({
   year,
 
@@ -16,7 +14,7 @@ export function ImageUpload({
       arr.push(e.target.files[i]);
       // console.log(e.target.files[i]);
     }
-    console.log(arr);
+    // console.log(arr);
     setGalleryImage(arr);
   };
   const onSubmit = (e) => {

@@ -1,5 +1,3 @@
-if (process.env.NODE_ENV !== "production")
-  require("dotenv").config({ path: "./config.env" });
 const Db = process.env.ATLAS_URI;
 const port = process.env.PORT || 3000;
 let express = require("express"),
@@ -7,7 +5,7 @@ let express = require("express"),
   cors = require("cors"),
   bodyParser = require("body-parser");
 
-const api = require("./routes/user.routes");
+const api = require("./routes/users");
 
 // const express = require("express");
 const path = require("path");
@@ -52,8 +50,6 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
-
-// app.use("/public", express.static("public"));
 
 app.use("/api", api);
 

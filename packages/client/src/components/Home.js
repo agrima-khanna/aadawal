@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import { Slideshow, GalleryPreview } from ".";
 import { GoToTop } from ".";
 
-import ngo_logo from "./ngo_logo.jpg";
+import ngo_logo from "./ngo/ngo_logo.jpg";
 import q1 from "./quotes/q1.png";
 import q2 from "./quotes/q2.png";
 import q3 from "./quotes/q3.png";
@@ -17,9 +17,12 @@ import q9 from "./quotes/q9.png";
 import q10 from "./quotes/q10.png";
 import q11 from "./quotes/q11.png";
 
-export function Home() {
+export function Home({ changeState }) {
   const images = [];
   const quotes = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11];
+  useEffect(() => {
+    changeState("Home");
+  });
   return (
     <div className="home">
       <div className="about">

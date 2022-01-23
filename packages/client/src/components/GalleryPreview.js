@@ -9,20 +9,12 @@ function getYears(n) {
   return years;
 }
 const displayImgs = (activeYear, setImagesDatabase) => {
-  axios.post("/image/display/" + activeYear).then((res) => {
+  axios.get("/image/display/" + activeYear).then((res) => {
     const imgs = res.data.images;
-    console.log(res.data.images);
+    // console.log(res.data.images);
     var imagesNew = [];
     if (imgs)
       imgs.map((img, i) => {
-        // axios
-        //   .get("http://localhost:3000/image/filename", {
-        //     params: {
-        //       filename: img,
-        //     },
-        //   })
-        //   .then((res) => {
-        //     console.log(res);
         imagesNew.push("/image/" + img.filename);
         setImagesDatabase({ images: imagesNew, flag: 1 });
         // });

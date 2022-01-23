@@ -5,7 +5,6 @@ const Image = require("../models/Image");
 var Grid = require("gridfs-stream");
 const fs = require("fs");
 Grid.mongo = mongoose.mongo;
-// var gfs = new Grid(mongoose.connection.db);
 module.exports = (upload) => {
   const url = process.env.ATLAS_URI;
 
@@ -24,10 +23,10 @@ module.exports = (upload) => {
   });
 
   /*
-        POST: Upload multiple files upto 3
+        POST: Upload multiple files 
     */
   imageRouter.post("/upload", upload.array("galleryImg"), (req, res, next) => {
-    console.log(req.files);
+    // console.log(req.files);
     const arr = req.files;
     var cnt = 0;
     arr.map((file) => {
@@ -54,11 +53,11 @@ module.exports = (upload) => {
   /*
         GET: Fetches all the files in the uploads collection
     */
-  imageRouter.route("/display/:year").post((req, res, next) => {
+  imageRouter.route("/display/:year").get((req, res, next) => {
     var images = [];
-    console.log(req);
+    // console.log(req);
     Image.find({ year: req.params.year }, function (err, docs) {
-      console.log(docs);
+      // console.log(docs);
       docs.map((file) => {
         images.push({
           filename: file.filename,
@@ -73,7 +72,7 @@ module.exports = (upload) => {
     });
   });
   /* 
-        GET: Fetches a particular image and render on browser
+        GET: Fetches a particular image 
     */
   imageRouter.route("/:filename").get((req, res, next) => {
     gfs.find({ filename: req.params.filename }).toArray((err, files) => {
@@ -85,7 +84,7 @@ module.exports = (upload) => {
         DELETE: Delete a particular file by an ID
     */
   imageRouter.route("/delete/:id").post((req, res, next) => {
-    console.log(req.params.id);
+    // console.log(req.params.id);
     gfs.delete(new mongoose.Types.ObjectId(req.params.id), (err, data) => {
       if (err) {
         // console.log("helloooooo");

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/contact.css";
 import { GoToTop } from ".";
-export function Contact() {
+export function Contact({ changeState }) {
+  useEffect(() => {
+    changeState("Contact Us");
+  });
   return (
     <div className="contactUs">
       <div className="address">

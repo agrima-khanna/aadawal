@@ -20,7 +20,7 @@ const deleteImage = async (
   setImagesDatabase,
   setProgress
 ) => {
-  console.log(myRef.current.getCurrentIndex());
+  // console.log(myRef.current.getCurrentIndex());
   const result = await confirm("Are you sure?");
   if (!result) {
     return;
@@ -28,10 +28,10 @@ const deleteImage = async (
 
   var index = myRef.current.getCurrentIndex();
   var imagesNew = imagesDatabase.images;
-  console.log(index);
+  // console.log(index);
 
   axios.post("/image/delete/" + imagesNew[index].id).then((res) => {
-    console.log(res.data.success);
+    // console.log(res.data.success);
     if (res.data.success) {
       displayImgs(activeYear, setImagesDatabase, setProgress);
     }
@@ -39,7 +39,7 @@ const deleteImage = async (
 };
 const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
   axios
-    .post("/image/display/" + activeYear, {
+    .get("/image/display/" + activeYear, {
       onDownloadProgress: (pe) => {
         if (pe.loaded == pe.total) setProgress(false);
         else setProgress(true);
@@ -47,8 +47,8 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
     })
     .then((res) => {
       const imgs = res.data.images;
-      console.log(res);
-      console.log(res.data.images);
+      // console.log(res);
+      // console.log(res.data.images);
       var imagesNew = [];
       if (imgs)
         imgs.map((img, i) => {
@@ -65,7 +65,7 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
         setImagesDatabase({ images: imagesNew, flag: 1 });
     });
 };
-export function Gallery({ editAllowed }) {
+export function Gallery({ editAllowed, changeState }) {
   const [activeYear, setActiveYear] = useState(new Date().getFullYear());
   const [imagesDatabase, setImagesDatabase] = useState({
     images: [],
@@ -80,6 +80,7 @@ export function Gallery({ editAllowed }) {
   const myRef = React.createRef();
   useEffect(() => {
     displayImgs(activeYear, setImagesDatabase, setProgress);
+    changeState("Gallery");
   }, [activeYear]);
 
   if (imagesDatabase.flag === 0) return null;

@@ -47,5 +47,6 @@ td {
   gap: 6px;
 }
 .activitiesGallery {
+  padding: 24px;
   width: 52vw;
 }

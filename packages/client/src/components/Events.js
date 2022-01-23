@@ -1,7 +1,10 @@
 import "../styles/ngoAndEvents.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { GoToTop } from ".";
-export function Events() {
+export function Events({ changeState }) {
+  useEffect(() => {
+    changeState("Events");
+  });
   const sections = [
     {
       id: "intro",

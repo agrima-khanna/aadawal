@@ -174,7 +174,6 @@ button {
   /* color: #464646; */
   color: #5f5f5f;
   margin: 0 auto;
-  animation: showup 7s;
 }
 .aboutHeader {
   font-size: 2em;
@@ -270,27 +269,6 @@ button {
   object-fit: cover;
 }
 
-.galleryPreview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  justify-content: center;
-  gap: 20px;
-  background-color: #a91d1d;
-  padding: 50px;
-  padding-left: 25vw;
-  padding-right: 25vw;
-}
-.galleryPreviewHeader {
-  color: white;
-  font-size: 52px;
-  font-weight: lighter;
-  margin-bottom: 10px;
-}
-.imgPreview {
-  width: 100%;
-}
 .yearBtns {
   display: flex;
 }
