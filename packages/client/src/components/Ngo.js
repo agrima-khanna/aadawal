@@ -11,7 +11,7 @@ import img6 from "./ngo/img6.JPG";
 import img7 from "./ngo/img7.JPG";
 import img8 from "./ngo/img8.JPG";
 import img9 from "./ngo/img9.JPG";
-import img10 from "./ngo/img10.JPG";
+import img10 from "./ngo/img10.jpg";
 import { GoToTop, Slideshow } from ".";
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 function ActivitiesGallery(props) {
