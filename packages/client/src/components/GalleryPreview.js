@@ -23,7 +23,7 @@ const displayImgs = (activeYear, setImagesDatabase) => {
         //   })
         //   .then((res) => {
         //     console.log(res);
-        imagesNew.push("/gallery/image/" + img.filename);
+        imagesNew.push("/image/" + img.filename);
         setImagesDatabase({ images: imagesNew, flag: 1 });
         // });
       });
