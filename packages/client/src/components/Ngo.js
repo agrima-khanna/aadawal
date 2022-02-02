@@ -14,23 +14,6 @@ import img9 from "./ngo/img9.JPG";
 import img10 from "./ngo/img10.jpg";
 import { GoToTop, Slideshow } from ".";
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-function ActivitiesGallery(props) {
-  if (props.flag)
-    return (
-      <div className="activitiesGallery">
-        <Slideshow
-          images={images}
-          properties={{
-            indicators: true,
-            duration: 2000,
-            arrows: false,
-          }}
-          category={"ngo"}
-        />
-      </div>
-    );
-  else return <></>;
-}
 
 export function Ngo({ changeState }) {
   const sections = [
@@ -111,58 +94,66 @@ export function Ngo({ changeState }) {
           );
         })}
       </div>
-      <table>
-        <tbody>
-          <tr>
-            <td
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                backgroundColor: "#a91d1d",
-                borderColor: "#a91d1d",
-              }}
-            >
-              <ActivitiesGallery flag={true} />
-            </td>
-          </tr>
-          {sections.map((section, index) => {
-            return (
-              <tr key={index}>
-                <td id={section.id}>
-                  <div
-                    style={{
-                      fontWeight: "bolder",
-                      fontSize: "x-large",
-                      color: "#f05454",
-                    }}
-                  >
-                    {section.name}
-                  </div>
-                  <br />
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          overflow: "scroll",
+          overflowY: "unset",
+        }}
+      >
+        <div className="activitiesGallery">
+          <Slideshow
+            images={images}
+            properties={{
+              indicators: true,
+              duration: 2000,
+              arrows: false,
+            }}
+            category={"ngo"}
+          />
+        </div>
 
-                  <div>
-                    {section.hasOwnProperty("photo") && (
-                      <img
-                        style={{
-                          float: `${index % 2 ? "left" : "right"}`,
-                          margin: "8px",
-                        }}
-                        className="sectionPhoto"
-                        src={section.photo}
-                        alt={section.id}
-                      ></img>
-                    )}
-                    <div
-                      style={{ textAlign: "left", fontSize: "large" }}
-                      dangerouslySetInnerHTML={{ __html: section.content }}
-                    ></div>
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+        {sections.map((section, index) => {
+          return (
+            <div
+              key={index}
+              id={section.id}
+              style={{ padding: "40px", paddingTop: "20px" }}
+            >
+              <div
+                style={{
+                  fontWeight: "bolder",
+                  fontSize: "x-large",
+                  color: "#f05454",
+                }}
+              >
+                {section.name}
+              </div>
+              <br />
+
+              <div>
+                {section.hasOwnProperty("photo") && (
+                  <img
+                    style={{
+                      float: `${index % 2 ? "left" : "right"}`,
+                      margin: "8px",
+                    }}
+                    className="sectionPhoto"
+                    src={section.photo}
+                    alt={section.id}
+                  ></img>
+                )}
+                <div
+                  style={{ textAlign: "left", fontSize: "large" }}
+                  dangerouslySetInnerHTML={{ __html: section.content }}
+                ></div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
       <GoToTop />
     </div>
   );

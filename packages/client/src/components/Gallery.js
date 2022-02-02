@@ -56,7 +56,9 @@ const displayImgs = (activeYear, setImagesDatabase, setProgress) => {
             original: "/image/" + img.filename,
             thumbnail: "/image/" + img.filename,
             id: img.id,
-            originalHeight: "400px",
+            // originalHeight: "400px",
+            originalWidth: "400px",
+            originalAlt: "Loading...",
           });
           setImagesDatabase({ images: imagesNew, flag: 1 });
           // });
@@ -83,7 +85,6 @@ export function Gallery({ editAllowed, changeState }) {
     changeState("Gallery");
   }, [activeYear]);
 
-  if (imagesDatabase.flag === 0) return null;
   return (
     <div className="gallery">
       <div className="yearsNav">
@@ -115,61 +116,59 @@ export function Gallery({ editAllowed, changeState }) {
           );
         })}
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          paddingBottom: "24px",
-          gap: "8px",
-        }}
-      >
-        {editAllowed && imagesDatabase.images.length > 0 && (
-          <button
-            className="deleteBtn"
-            onClick={() =>
-              deleteImage(
-                myRef,
-                activeYear,
-                imagesDatabase,
-                setImagesDatabase,
-                setProgress
-              )
-            }
-          >
-            Delete This Image
-          </button>
-        )}
-        <div className="galleryDiv">
-          {progress && (
-            <>
-              <div>Loading...</div>
-              <CircularProgress />
-            </>
+      {imagesDatabase.flag !== 0 && (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "nowrap",
+            alignItems: "center",
+            // justifyContent: "space-between",
+            paddingBottom: "24px",
+            gap: "8px",
+            overflow: "scroll",
+          }}
+        >
+          {editAllowed && imagesDatabase.images.length > 0 && (
+            <button
+              className="deleteBtn"
+              onClick={() =>
+                deleteImage(
+                  myRef,
+                  activeYear,
+                  imagesDatabase,
+                  setImagesDatabase,
+                  setProgress
+                )
+              }
+            >
+              Delete This Image
+            </button>
           )}
+          <div className="galleryDiv">
+            {imagesDatabase.images.length > 0 && (
+              <ImageGallery
+                items={imagesDatabase.images}
+                thumbnailPosition="right"
+                showBullets="true"
+                ref={myRef}
+              />
+            )}
+            {imagesDatabase.images.length == 0 && (
+              <div style={{ fontWeight: "bold" }}>No images</div>
+            )}
+          </div>
 
-          {imagesDatabase.images.length > 0 && (
-            <ImageGallery
-              items={imagesDatabase.images}
-              thumbnailPosition="right"
-              showBullets="true"
-              ref={myRef}
+          {editAllowed && (
+            <ImageUpload
+              year={activeYear}
+              setImagesDatabase={setImagesDatabase}
+              displayImgs={displayImgs}
+              setProgress={setProgress}
             />
           )}
-          {imagesDatabase.images.length == 0 && (
-            <div style={{ fontWeight: "bold" }}>No images</div>
-          )}
         </div>
+      )}
 
-        {editAllowed && (
-          <ImageUpload
-            year={activeYear}
-            setImagesDatabase={setImagesDatabase}
-            displayImgs={displayImgs}
-            setProgress={setProgress}
-          />
-        )}
-        {/* <Login editAllowed={editAllowed} setEditAllowed={setEditAllowed} /> */}
-      </div>
       <GoToTop />
     </div>
   );

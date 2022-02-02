@@ -18,7 +18,7 @@ export function About({ changeState }) {
     changeState("About Us");
   });
   return (
-    <div>
+    <div className="aboutUs">
       <div className="about">
         International festival Rajasthan Sahitya Mahotsav "AADAWAL” is a
         platform for artists and artisans of Rajasthan in order to promote the

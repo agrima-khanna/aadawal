@@ -4,14 +4,21 @@ tr,
   border: solid 0.5px gray;
   border-collapse: collapse;
 } */
+
 td {
   padding: 48px;
   padding-top: 40px;
   padding-bottom: 40px;
 }
-.ngo,
+
 .events {
   display: flex;
+  width: 100vw;
+}
+.ngo {
+  /* flex-direction: column; */
+  display: flex;
+  width: 100vw;
 }
 .sectionNav {
   display: flex;
@@ -24,6 +31,7 @@ td {
 .sectionNavBtn {
   text-decoration: none;
   min-width: max-content;
+
   /* flex: flex-grow; */
   color: white;
   /* padding: 48px; */
@@ -44,9 +52,16 @@ td {
 }
 .activities {
   display: flex;
+  flex-direction: column;
   gap: 6px;
 }
 .activitiesGallery {
-  padding: 24px;
-  width: 52vw;
+  padding: 30px;
+
+  padding-left: 0;
+  padding-right: 0;
+  /* height: 500px; */
+  display: inline;
+
+  background-color: #a91d1d;
 }

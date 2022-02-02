@@ -58,12 +58,13 @@ module.exports = (upload) => {
     // console.log(req);
     Image.find({ year: req.params.year }, function (err, docs) {
       // console.log(docs);
-      docs.map((file) => {
-        images.push({
-          filename: file.filename,
-          id: file.fileId,
+      if (docs)
+        docs.map((file) => {
+          images.push({
+            filename: file.filename,
+            id: file.fileId,
+          });
         });
-      });
       res.status(200).json({
         success: true,
         images: images,

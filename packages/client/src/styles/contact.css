@@ -4,6 +4,7 @@
   gap: 8px;
   padding: 240px;
   padding-top: 10px;
+  width: 100vw;
 }
 .address,
 .contact {

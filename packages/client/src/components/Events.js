@@ -84,9 +84,11 @@ Followed by discussion on significant treasure of old manuscripts and their wort
       <div className="sectionNav">
         {sections.map((section, i) => {
           return (
-            <a key={i} className="sectionNavBtn" href={`#${section.id}`}>
-              {section.name}
-            </a>
+            section.id !== "intro" && (
+              <a key={i} className="sectionNavBtn" href={`#${section.id}`}>
+                {section.name}
+              </a>
+            )
           );
         })}
       </div>
